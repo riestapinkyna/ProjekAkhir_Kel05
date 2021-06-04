@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProjekAkhir_Kel05
 {
-    public partial class Form1 : Form
+    public partial class CRUD_Admin : Form
     {
-        public Form1()
+        public CRUD_Admin()
         {
             InitializeComponent();
         }
