@@ -385,7 +385,7 @@
             this.bunifuCustomLabel10.BackColor = System.Drawing.Color.DarkBlue;
             this.bunifuCustomLabel10.Font = new System.Drawing.Font("High Tower Text", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bunifuCustomLabel10.Location = new System.Drawing.Point(536, 122);
+            this.bunifuCustomLabel10.Location = new System.Drawing.Point(537, 122);
             this.bunifuCustomLabel10.Name = "bunifuCustomLabel10";
             this.bunifuCustomLabel10.Size = new System.Drawing.Size(339, 51);
             this.bunifuCustomLabel10.TabIndex = 28;
