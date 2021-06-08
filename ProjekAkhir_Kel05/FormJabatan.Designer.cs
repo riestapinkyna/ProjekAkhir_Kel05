@@ -30,6 +30,7 @@
         {
             this.bunifuCheckbox1 = new ns1.BunifuCheckbox();
             this.bunifuCards1 = new ns1.BunifuCards();
+            this.bunifuCustomLabel1 = new ns1.BunifuCustomLabel();
             this.SuspendLayout();
             // 
             // bunifuCheckbox1
@@ -58,16 +59,27 @@
             this.bunifuCards1.Size = new System.Drawing.Size(149, 74);
             this.bunifuCards1.TabIndex = 1;
             // 
+            // bunifuCustomLabel1
+            // 
+            this.bunifuCustomLabel1.AutoSize = true;
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(219, 201);
+            this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
+            this.bunifuCustomLabel1.Size = new System.Drawing.Size(119, 13);
+            this.bunifuCustomLabel1.TabIndex = 2;
+            this.bunifuCustomLabel1.Text = "HALO ZUL MASUK GA";
+            // 
             // FormJabatan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bunifuCustomLabel1);
             this.Controls.Add(this.bunifuCards1);
             this.Controls.Add(this.bunifuCheckbox1);
             this.Name = "FormJabatan";
             this.Text = "FormJabatan";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -75,5 +87,6 @@
 
         private ns1.BunifuCheckbox bunifuCheckbox1;
         private ns1.BunifuCards bunifuCards1;
+        private ns1.BunifuCustomLabel bunifuCustomLabel1;
     }
 }
