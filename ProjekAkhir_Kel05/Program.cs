@@ -16,7 +16,9 @@ namespace ProjekAkhir_Kel05
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CRUD_Admin());
+            //Application.Run(new CRUD_Supplier());
+            //Application.Run(new CRUDJenisBaju());
+            Application.Run(new CRUDPakaian());
         }
     }
 }

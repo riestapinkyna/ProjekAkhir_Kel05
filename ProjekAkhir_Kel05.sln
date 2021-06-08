@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.1433
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjekAkhir_Kel05", "ProjekAkhir_Kel05\ProjekAkhir_Kel05.csproj", "{45CDAD4F-31DC-4CCD-B970-D51DE0F35258}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRG2_UserControl_KEL05", "PRG2_UserControl_KEL05\PRG2_UserControl_KEL05.csproj", "{460F42F2-0686-42EB-985F-14E2476D7B47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{45CDAD4F-31DC-4CCD-B970-D51DE0F35258}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45CDAD4F-31DC-4CCD-B970-D51DE0F35258}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45CDAD4F-31DC-4CCD-B970-D51DE0F35258}.Release|Any CPU.Build.0 = Release|Any CPU
+		{460F42F2-0686-42EB-985F-14E2476D7B47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{460F42F2-0686-42EB-985F-14E2476D7B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{460F42F2-0686-42EB-985F-14E2476D7B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{460F42F2-0686-42EB-985F-14E2476D7B47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

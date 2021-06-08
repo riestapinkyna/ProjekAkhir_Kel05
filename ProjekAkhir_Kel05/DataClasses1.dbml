@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PRG2_KEL05" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(local);Initial Catalog=PRG2_KEL05;Integrated Security=True" SettingsObjectName="ProjekAkhir_Kel05.Properties.Settings" SettingsPropertyName="PRG2_KEL05ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tblJabatan" Member="tblJabatans">
+    <Type Name="tblJabatan">
+      <Column Name="id_jabatan" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="deskripsi_jabatan" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="tblJabatan_tblPegawai" Member="tblPegawais" ThisKey="id_jabatan" OtherKey="id_jabatan" Type="tblPegawai" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblJenis_Pakaian" Member="tblJenis_Pakaians">
+    <Type Name="tblJenis_Pakaian">
+      <Column Name="id_jenis" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="deskripsi_jenis" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="tblJenis_Pakaian_tblPakaian" Member="tblPakaians" ThisKey="id_jenis" OtherKey="id_jenis" Type="tblPakaian" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblSupplier" Member="tblSuppliers">
+    <Type Name="tblSupplier">
+      <Column Name="id_supplier" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nama_supplier" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="no_telepon" Type="System.String" DbType="VarChar(13) NOT NULL" CanBeNull="false" />
+      <Column Name="alamat" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="tblSupplier_tblPakaian" Member="tblPakaians" ThisKey="id_supplier" OtherKey="id_supplier" Type="tblPakaian" />
+      <Association Name="tblSupplier_tblreturnSupplier" Member="tblreturnSuppliers" ThisKey="id_supplier" OtherKey="id_supplier" Type="tblreturnSupplier" />
+      <Association Name="tblSupplier_tblTransaksi_Supplier" Member="tblTransaksi_Suppliers" ThisKey="id_supplier" OtherKey="id_supplier" Type="tblTransaksi_Supplier" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblPakaian" Member="tblPakaians">
+    <Type Name="tblPakaian">
+      <Column Name="id_pakaian" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_jenis" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="id_supplier" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="nama_pakaian" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="stock" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="harga_beli" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="harga_jual" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="keterangan" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="tblPakaian_tblDetilPembelianSupplier" Member="tblDetilPembelianSuppliers" ThisKey="id_pakaian" OtherKey="id_pakaian" Type="tblDetilPembelianSupplier" />
+      <Association Name="tblPakaian_tblDetilReturnPelanggan" Member="tblDetilReturnPelanggans" ThisKey="id_pakaian" OtherKey="id_pakaian" Type="tblDetilReturnPelanggan" />
+      <Association Name="tblPakaian_tblDetilReturnSupplier" Member="tblDetilReturnSuppliers" ThisKey="id_pakaian" OtherKey="id_pakaian" Type="tblDetilReturnSupplier" />
+      <Association Name="tblPakaian_tblDetilTransaksiPelanggan" Member="tblDetilTransaksiPelanggans" ThisKey="id_pakaian" OtherKey="id_pakaian" Type="tblDetilTransaksiPelanggan" />
+      <Association Name="tblJenis_Pakaian_tblPakaian" Member="tblJenis_Pakaian" ThisKey="id_jenis" OtherKey="id_jenis" Type="tblJenis_Pakaian" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="tblSupplier_tblPakaian" Member="tblSupplier" ThisKey="id_supplier" OtherKey="id_supplier" Type="tblSupplier" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblDetilPembelianSupplier" Member="tblDetilPembelianSuppliers">
+    <Type Name="tblDetilPembelianSupplier">
+      <Column Name="id_transaksi" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_pakaian" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tblPakaian_tblDetilPembelianSupplier" Member="tblPakaian" ThisKey="id_pakaian" OtherKey="id_pakaian" Type="tblPakaian" IsForeignKey="true" />
+      <Association Name="tblTransaksi_Supplier_tblDetilPembelianSupplier" Member="tblTransaksi_Supplier" ThisKey="id_transaksi" OtherKey="id_transaksi" Type="tblTransaksi_Supplier" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblDetilReturnPelanggan" Member="tblDetilReturnPelanggans">
+    <Type Name="tblDetilReturnPelanggan">
+      <Column Name="id_return" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_pakaian" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="tblPakaian_tblDetilReturnPelanggan" Member="tblPakaian" ThisKey="id_pakaian" OtherKey="id_pakaian" Type="tblPakaian" IsForeignKey="true" />
+      <Association Name="tblreturnPelanggan_tblDetilReturnPelanggan" Member="tblreturnPelanggan" ThisKey="id_return" OtherKey="id_return" Type="tblreturnPelanggan" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblDetilReturnSupplier" Member="tblDetilReturnSuppliers">
+    <Type Name="tblDetilReturnSupplier">
+      <Column Name="id_return" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_pakaian" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="tblPakaian_tblDetilReturnSupplier" Member="tblPakaian" ThisKey="id_pakaian" OtherKey="id_pakaian" Type="tblPakaian" IsForeignKey="true" />
+      <Association Name="tblreturnSupplier_tblDetilReturnSupplier" Member="tblreturnSupplier" ThisKey="id_return" OtherKey="id_return" Type="tblreturnSupplier" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblDetilTransaksiPelanggan" Member="tblDetilTransaksiPelanggans">
+    <Type Name="tblDetilTransaksiPelanggan">
+      <Column Name="id_transaksi" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_pakaian" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tblPakaian_tblDetilTransaksiPelanggan" Member="tblPakaian" ThisKey="id_pakaian" OtherKey="id_pakaian" Type="tblPakaian" IsForeignKey="true" />
+      <Association Name="tblTransaksi_Penjualan_tblDetilTransaksiPelanggan" Member="tblTransaksi_Penjualan" ThisKey="id_transaksi" OtherKey="id_transaksi" Type="tblTransaksi_Penjualan" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblPegawai" Member="tblPegawais">
+    <Type Name="tblPegawai">
+      <Column Name="id_pegawai" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_jabatan" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="nik" Type="System.String" DbType="VarChar(16) NOT NULL" CanBeNull="false" />
+      <Column Name="nama" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ttl" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="no_hp" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="username" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tblPegawai_tblTransaksi_Penjualan" Member="tblTransaksi_Penjualans" ThisKey="id_pegawai" OtherKey="id_pegawai" Type="tblTransaksi_Penjualan" />
+      <Association Name="tblPegawai_tblTransaksi_Supplier" Member="tblTransaksi_Suppliers" ThisKey="id_pegawai" OtherKey="id_pegawai" Type="tblTransaksi_Supplier" />
+      <Association Name="tblPegawai_tblTransaksiMember" Member="tblTransaksiMembers" ThisKey="id_pegawai" OtherKey="id_pegawai" Type="tblTransaksiMember" />
+      <Association Name="tblJabatan_tblPegawai" Member="tblJabatan" ThisKey="id_jabatan" OtherKey="id_jabatan" Type="tblJabatan" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblPelanggan" Member="tblPelanggans">
+    <Type Name="tblPelanggan">
+      <Column Name="id_pelanggan" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_member" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="nama" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="no_hp" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="tglDaftarMember" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="alamat" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Association Name="tblPelanggan_tblreturnPelanggan" Member="tblreturnPelanggans" ThisKey="id_pelanggan" OtherKey="id_pelanggan" Type="tblreturnPelanggan" />
+      <Association Name="tblPelanggan_tblTransaksi_Penjualan" Member="tblTransaksi_Penjualans" ThisKey="id_pelanggan" OtherKey="id_pelanggan" Type="tblTransaksi_Penjualan" />
+      <Association Name="tblTransaksiMember_tblPelanggan" Member="tblTransaksiMember" ThisKey="id_member" OtherKey="id_member" Type="tblTransaksiMember" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblreturnPelanggan" Member="tblreturnPelanggans">
+    <Type Name="tblreturnPelanggan">
+      <Column Name="id_return" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_pelanggan" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="tanggalReturn" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="tanggalkirimKembali" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="keterangan" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="tblreturnPelanggan_tblDetilReturnPelanggan" Member="tblDetilReturnPelanggans" ThisKey="id_return" OtherKey="id_return" Type="tblDetilReturnPelanggan" />
+      <Association Name="tblPelanggan_tblreturnPelanggan" Member="tblPelanggan" ThisKey="id_pelanggan" OtherKey="id_pelanggan" Type="tblPelanggan" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblreturnSupplier" Member="tblreturnSuppliers">
+    <Type Name="tblreturnSupplier">
+      <Column Name="id_return" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_supplier" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="tanggalReturn" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="tanggalkirimKembali" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="keterangan" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="tblreturnSupplier_tblDetilReturnSupplier" Member="tblDetilReturnSuppliers" ThisKey="id_return" OtherKey="id_return" Type="tblDetilReturnSupplier" />
+      <Association Name="tblSupplier_tblreturnSupplier" Member="tblSupplier" ThisKey="id_supplier" OtherKey="id_supplier" Type="tblSupplier" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblTransaksi_Penjualan" Member="tblTransaksi_Penjualans">
+    <Type Name="tblTransaksi_Penjualan">
+      <Column Name="id_transaksi" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_pelanggan" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="id_pegawai" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="tgl_transaksi" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="diskon" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="harga_total" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tblTransaksi_Penjualan_tblDetilTransaksiPelanggan" Member="tblDetilTransaksiPelanggans" ThisKey="id_transaksi" OtherKey="id_transaksi" Type="tblDetilTransaksiPelanggan" />
+      <Association Name="tblTransaksi_Penjualan_tblTransaksiKurir" Member="tblTransaksiKurirs" ThisKey="id_transaksi" OtherKey="id_transaksi" Type="tblTransaksiKurir" />
+      <Association Name="tblPegawai_tblTransaksi_Penjualan" Member="tblPegawai" ThisKey="id_pegawai" OtherKey="id_pegawai" Type="tblPegawai" IsForeignKey="true" />
+      <Association Name="tblPelanggan_tblTransaksi_Penjualan" Member="tblPelanggan" ThisKey="id_pelanggan" OtherKey="id_pelanggan" Type="tblPelanggan" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblTransaksi_Supplier" Member="tblTransaksi_Suppliers">
+    <Type Name="tblTransaksi_Supplier">
+      <Column Name="id_transaksi" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_supplier" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="id_pegawai" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="tgl_transaksi" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="harga_total" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tblTransaksi_Supplier_tblDetilPembelianSupplier" Member="tblDetilPembelianSuppliers" ThisKey="id_transaksi" OtherKey="id_transaksi" Type="tblDetilPembelianSupplier" />
+      <Association Name="tblPegawai_tblTransaksi_Supplier" Member="tblPegawai" ThisKey="id_pegawai" OtherKey="id_pegawai" Type="tblPegawai" IsForeignKey="true" />
+      <Association Name="tblSupplier_tblTransaksi_Supplier" Member="tblSupplier" ThisKey="id_supplier" OtherKey="id_supplier" Type="tblSupplier" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblTransaksiKurir" Member="tblTransaksiKurirs">
+    <Type Name="tblTransaksiKurir">
+      <Column Name="id_trKurir" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_transaksi" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="namaEkspedisi" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="biayaPengiriman" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="noResi" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="tglPengiriman" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="tblTransaksi_Penjualan_tblTransaksiKurir" Member="tblTransaksi_Penjualan" ThisKey="id_transaksi" OtherKey="id_transaksi" Type="tblTransaksi_Penjualan" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblTransaksiMember" Member="tblTransaksiMembers">
+    <Type Name="tblTransaksiMember">
+      <Column Name="id_member" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_pegawai" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="tgl_daftar" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="tgl_expired" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="member_tipe" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="total_pembayaran" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="tblTransaksiMember_tblPelanggan" Member="tblPelanggans" ThisKey="id_member" OtherKey="id_member" Type="tblPelanggan" />
+      <Association Name="tblPegawai_tblTransaksiMember" Member="tblPegawai" ThisKey="id_pegawai" OtherKey="id_pegawai" Type="tblPegawai" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+</Database>

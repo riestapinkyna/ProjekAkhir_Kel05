@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -50,11 +51,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CRUD Supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRUD Supplier.Designer.cs">
+      <DependentUpon>CRUD Supplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRUDJabatan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRUDJabatan.Designer.cs">
+      <DependentUpon>CRUDJabatan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRUDPelanggan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRUDPelanggan.Designer.cs">
+      <DependentUpon>CRUDPelanggan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CRUDPakaian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRUDPakaian.Designer.cs">
+      <DependentUpon>CRUDPakaian.cs</DependentUpon>
+    </Compile>
     <Compile Include="CRUDPegawai.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CRUDPegawai.Designer.cs">
       <DependentUpon>CRUDPegawai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataClasses1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
     <Compile Include="FormAwal.cs">
       <SubType>Form</SubType>
@@ -62,11 +92,35 @@
     <Compile Include="FormAwal.Designer.cs">
       <DependentUpon>FormAwal.cs</DependentUpon>
     </Compile>
+    <Compile Include="CRUDJenisBaju.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRUDJenisBaju.Designer.cs">
+      <DependentUpon>CRUDJenisBaju.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CRUD Supplier.resx">
+      <DependentUpon>CRUD Supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRUDJabatan.resx">
+      <DependentUpon>CRUDJabatan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRUDJenisBaju.resx">
+      <DependentUpon>CRUDJenisBaju.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRUDPelanggan.resx">
+      <DependentUpon>CRUDPelanggan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRUDPakaian.resx">
+      <DependentUpon>CRUDPakaian.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CRUDPegawai.resx">
       <DependentUpon>CRUDPegawai.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DataClasses1.dbml.layout">
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="FormAwal.resx">
       <DependentUpon>FormAwal.cs</DependentUpon>
     </EmbeddedResource>
@@ -80,6 +134,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="DataClasses1.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -95,6 +154,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\zink.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PRG2_UserControl_KEL05\PRG2_UserControl_KEL05.csproj">
+      <Project>{460F42F2-0686-42EB-985F-14E2476D7B47}</Project>
+      <Name>PRG2_UserControl_KEL05</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
